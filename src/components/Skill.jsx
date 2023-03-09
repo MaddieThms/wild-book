@@ -1,10 +1,11 @@
-import React from 'react'
-import "./skill.css"
+import React from "react";
+import style from "./skill.module.css";
 
-export const Skill = ({name, votes}) => {
+export const Skill = ({ name, votes }) => {
   return (
-    <li className="skill">{name}
-        <span className="votes">{votes}</span>
+    <li className={style.skill}>
+      {name}
+      <span className={style.votes}>{votes}</span>
     </li>
-  )
-}
+  );
+};
