@@ -23,7 +23,15 @@ const Home = () => {
         <h2>Wilders</h2>
         <section className={style.cardrow}>
           {wilders?.map((wilder) => (
-            <Wilder key={wilder.id} name={wilder.name} skills={wilder.skills} />
+            <Wilder
+              key={wilder.id}
+              wilder={wilder}
+              id={wilder.id}
+              name={wilder.name}
+              skills={wilder.skills}
+              setWilders={setWilders}
+              wilders={wilders}
+            />
           ))}
         </section>
       </main>
