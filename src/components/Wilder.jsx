@@ -3,13 +3,13 @@ import { Skill } from "./Skill";
 import blank_profile from "./../assets/blank_profile.png";
 import style from "./wilder.module.css";
 
-const Wilder = ({ ...wilder }) => {
+const Wilder = ({ name, skills }) => {
   return (
     <article className={style.card}>
-      <img src={blank_profile} alt={`${wilder.name} Profile`} />
-      <h3>{wilder.name}</h3>
+      <img src={blank_profile} alt={`${name} Profile`} />
+      <h3>{name}</h3>
       <ul className={style.skills}>
-        {wilder.skills?.map((skill) => (
+        {skills?.map((skill) => (
           <Skill key={skill.id} name={skill.name} votes={skill.votes} />
         ))}
       </ul>

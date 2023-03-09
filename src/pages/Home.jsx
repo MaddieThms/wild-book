@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import Wilder from "../components/Wilder";
 import style from "./home.module.css";
 import "./../App.css";
+import axios from "axios";
 
 const Home = () => {
   const [wilders, setWilders] = useState([]);
 
+  const getWilders = async () => {
+    const response = await fetch("http://localhost:5000/api/wilder");
+    const result = await response.json();
+    return setWilders(result);
+  };
+
   useEffect(() => {
-    fetch("http://localhost:5000/api/wilder")
-      .then((response) => response.json())
-      .then((result) => setWilders(result))
-      .catch((error) => console.log("error"));
-  }, []);
+    getWilders();
+  }, [wilders.length]);
 
   console.log("wilders", wilders);
   return (
@@ -20,7 +24,7 @@ const Home = () => {
         <h2>Wilders</h2>
         <section className={style.cardrow}>
           {wilders?.map((wilder) => (
-            <Wilder key={wilder.id} {...wilder} />
+            <Wilder key={wilder.id} name={wilder.name} skills={wilder.skills} />
           ))}
         </section>
       </main>
